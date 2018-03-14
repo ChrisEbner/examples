@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Accessible Tabs</title>
+  <style>
+    .hidden {
+      display: none;
+    }
+
+    .tabs {
+      width: 45rem;
+      font-family: "lucida grande", sans-serif;
+    }
+
+    [role="tablist"] {
+      margin: 0 0 -.1em;
+      overflow: visible;
+    }
+
+    [role="tab"] {
+      position: relative;
+      margin: 0;
+      padding: .3em .5em .4em;
+      border: 1px solid hsl(219, 1%, 72%);
+      border-radius: .2em .2em 0 0;
+      box-shadow: 0 0 .2em hsl(219, 1%, 72%);
+      overflow: visible;
+      font-family: inherit;
+      font-size: inherit;
+      background: hsl(220, 20%, 94%);
+    }
+
+    [role="tab"]:hover::before,
+    [role="tab"]:focus::before,
+    [role="tab"][aria-selected="true"]::before {
+      position: absolute;
+      bottom: 100%;
+      right: -1px;
+      left: -1px;
+      border-radius: 0.2em 0.2em 0 0;
+      border-top: 3px solid hsl(20, 96%, 48%);
+      content: '';
+    }
+
+    [role="tab"][aria-selected="true"] {
+      border-radius: 0;
+      background: hsl(220, 43%, 99%);
+      outline: 0;
+    }
+
+    [role="tab"][aria-selected="true"]:not(:focus):not(:hover)::before {
+      border-top: 5px solid hsl(218, 96%, 48%);
+    }
+
+    [role="tab"][aria-selected="true"]::after {
+      position: absolute;
+      z-index: 3;
+      bottom: -1px;
+      right: 0;
+      left: 0;
+      height: .3em;
+      background: hsl(220, 43%, 99%);
+      box-shadow: none;
+      content: '';
+    }
+
+    [role="tab"]:hover,
+    [role="tab"]:focus,
+    [role="tab"]:active {
+      outline: 0;
+      border-radius: 0;
+      color: inherit;
+    }
+
+    [role="tab"]:hover::before,
+    [role="tab"]:focus::before {
+      border-color: hsl(20, 96%, 48%);
+    }
+
+    [role="tabpanel"] {
+      position: relative;
+      z-index: 2;
+      padding: .5em .5em .7em;
+      border: 1px solid hsl(219, 1%, 72%);
+      border-radius: 0 .2em .2em .2em;
+      box-shadow: 0 0 .2em hsl(219, 1%, 72%);
+      background: hsl(220, 43%, 99%);
+
+    }
+
+    [role="tabpanel"]:focus {
+      border-color: hsl(20, 96%, 48%);
+      box-shadow: 0 0 .2em hsl(20, 96%, 48%);
+      outline: 0;
+    }
+
+    [role="tabpanel"]:focus::after {
+      position: absolute;
+      bottom: 0;
+      right: -1px;
+      left: -1px;
+      border-bottom: 3px solid hsl(20, 96%, 48%);
+      border-radius: 0 0 0.2em 0.2em;
+      content: '';
+    }
+
+    [role="tabpanel"] p {
+      margin: 0;
+    }
+
+    [role="tabpanel"] * + p {
+      margin-top: 1em;
+    }
+  </style>
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <div data-a11y-tabs class="tabs">
+    <div role="tablist" aria-label="Entertainment">
+      <button id="nils" role="tab" aria-selected="true" aria-controls="nils-tab" >What is Lorem Ipsum?</button>
+      <button id="agnes" role="tab" aria-selected="false" aria-controls="agnes-tab" tabindex="-1">Why do we use it?</button>
+      <button id="complex" role="tab" aria-selected="false" aria-controls="complexcomplex" tabindex="-1">Where can I get some?</button>
+    </div>
+
+    <div id="nils-tab" tabindex="0" role="tabpanel" aria-labelledby="nils">
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    </div>
+
+    <div id="agnes-tab" tabindex="0" role="tabpanel"  aria-labelledby="agnes" class="hidden">
+      <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+    </div>
+
+    <div id="complexcomplex" tabindex="0" role="tabpanel" aria-labelledby="complex" class="hidden">
+      <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
+    </div>
+  </div>
+
+  <script>
+    var keys = {
+      left: 37,
+      right: 39
+    }
+
+    var a11yTabs = function ($element) {
+      this.$element = $element
+      this.$tabs = this.$element.find('[role="tab"]')
+      this.$panels = this.$element.find('[role="tabpanel"]')
+
+      this.addListeners()
+    }
+
+    a11yTabs.prototype.addListeners = function () {
+      var self = this
+
+      function focusEventHandler (event) {
+        var $tab = $(event.target)
+        self.activateTab($tab)
+      }
+
+      this.$tabs.focus(focusEventHandler)
+
+      function keyupEventListener (event) {
+        var $tab = $(event.target)
+        var key = event.keyCode
+
+        if ($tab.length) {
+          if (key === keys.left) {
+            var $left = $tab.prev('[role="tab"]')
+            if ($left.length) {
+              $left.focus()
+            } else {
+              self.$tabs.last().focus()
+            }
+          } else if (key === keys.right) {
+            var $right = $tab.next('[role="tab"]')
+            if ($right.length) {
+              $right.focus()
+            } else {
+              self.$tabs.first().focus()
+            }
+          }
+        }
+      }
+
+      this.$element.keyup(keyupEventListener)
+    }
+
+    a11yTabs.prototype.activateTab = function ($tab) {
+      this.deactivateTabs()
+
+      $tab
+        .attr('tabindex', '0')
+        .attr('aria-selected', true)
+
+      var controls = $tab.attr('aria-controls')
+      $('#' + controls).removeClass('hidden')
+    }
+
+    a11yTabs.prototype.deactivateTabs = function () {
+      this.$tabs
+        .attr('tabindex', '-1')
+        .attr('aria-selected', false)
+
+      this.$panels.addClass('hidden')
+    }
+
+    var $tabs = $('.tabs')
+
+    $tabs.each(function () {
+      var tab = new a11yTabs($(this))
+    })
+  </script>
+</body>
+</html>

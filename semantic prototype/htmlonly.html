@@ -1,0 +1,87 @@
+  <!DOCTYPE html>
+  <html lang="de">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>T-shirt Shop</title>
+  </head>
+  <body>
+    <header>
+      <img alt="" src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjRkZGRkZGIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4gICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIgZmlsbD0ibm9uZSIvPiAgICA8cGF0aCBkPSJNMTEuOTkgMkM2LjQ3IDIgMiA2LjQ4IDIgMTJzNC40NyAxMCA5Ljk5IDEwQzE3LjUyIDIyIDIyIDE3LjUyIDIyIDEyUzE3LjUyIDIgMTEuOTkgMnptNC4yNCAxNkwxMiAxNS40NSA3Ljc3IDE4bDEuMTItNC44MS0zLjczLTMuMjMgNC45Mi0uNDJMMTIgNWwxLjkyIDQuNTMgNC45Mi40Mi0zLjczIDMuMjNMMTYuMjMgMTh6Ii8+PC9zdmc+">
+      T-shirt Shop
+    </header>
+
+    <nav>
+      <ul>
+        <li>
+          <a href="#">
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            Unsere T-shirts
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            News
+          </a>
+        </li>
+      </ul>
+
+      <form method="get" action="">
+        <input aria-label="Suche" placeholder="Search" type="text" />
+        <button type="submit" aria-label="Suche starten"></button>
+      </form>
+    </nav>
+
+    <main>
+      <h1>T-shirt Shop</h1>
+      <h2>Unsere Tshirts</h2>
+      <p>
+        Lorem ipsum dolor sit <a href="http://www.flickr.com/photos/rclark/">amet</a>, consectetur <strong>adipiscing elit</strong>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+
+        <h2>T-shirt Bestellung</h2>
+
+        <h3>T-shirt auswählen</h3>
+        <form>
+          <fieldset>
+            <legend>Größe</legend>
+            <input id="size-small" type="radio" name="size" value="small">
+            <label for="size-small">Klein - 36cm</label><br>
+            <input id="size-medium" type="radio" name="size" value="medium">
+            <label for="size-medium">Mittel - 40cm</label><br>
+            <input id="size-large" type="radio" name="size" value="large">
+            <label for="size-large">Groß - 44cm</label>
+          </fieldset>
+
+          <label for="comments">Anmerkungen</label>
+          <textarea id="comments"></textarea>
+
+          <h3>Kontaktdaten</h3>
+          <label for="sizes">Land</label>
+
+          <select name="size" id="sizes">
+            <option value="austria">Austria</option>
+            <option value="france">France</option>
+            <option value="italy">Italy</option>
+            <option value="spain">Spain</option>
+            <option value="sweden">Sweden</option>
+          </select>
+
+
+          <label for="adress">Adresse</label>
+          <input id="adress" type="text">
+
+          <button type="submit">Bestellung abschicken</button>
+        </form>
+    </main>
+
+    <footer >
+      Adresse: fakestraße 1/2/3 1010 Wien
+    </footer>
+  </body>
+  </html>

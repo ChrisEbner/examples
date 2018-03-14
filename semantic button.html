@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Semantic Buttons</title>
+  <style>
+    body {
+      padding: 3rem;
+    }
+
+    .divbutton {
+      border: 1px solid gray;
+      display: inline-block;
+      padding: 0.2rem;
+      background: #eee;
+    }
+
+    .divbutton,
+    button {
+      font-size: 2rem;
+      padding: 2rem;
+    }
+
+    button {
+      margin-right: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <form action="">
+    <button disabled class="button">Do something</button>
+
+    <div disabled class="divbutton" role="button" tabindex="0">Do something</div>
+  </form>
+
+  <script>
+    function doSomething () {
+      alert('doing something')
+    }
+
+    var button =  document.querySelector('.button')
+    button.addEventListener('click', doSomething)
+
+    var divbutton = document.querySelector('.divbutton')
+    divbutton.addEventListener('click', doSomething)
+
+    divbutton.addEventListener('keypress', function(event) {
+      if(event.keyCode == 13 || event.keyCode == 32) {
+        doSomething()
+      }
+    })
+
+    $('form').on('submit', function () {
+      alert('submitted')
+    })
+  </script>
+</body>
+</html>

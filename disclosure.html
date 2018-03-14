@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Accessible Disclosure</title>
+  <style>
+    .hidden {
+      visibility: hidden;
+      height: 0;
+      opacity: 0;
+      overflow: hidden;
+    }
+
+    .disclosurebutton {
+      opacity: 1;
+      transition: opacity 1s ease;
+    }
+
+    button {
+      padding-left: 2rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    ul {
+      padding-left: 2rem;
+    }
+
+    button:hover,
+    button:focus {
+      text-decoration: underline;
+    }
+
+    .arrow-right,
+    .arrow-down {
+      background-repeat: no-repeat;
+      background-position: left center;
+    }
+
+    .arrow-right {
+      background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4gICAgPHBhdGggZD0iTTguNTkgMTYuMzRsNC41OC00LjU5LTQuNTgtNC41OUwxMCA1Ljc1bDYgNi02IDZ6Ii8+ICAgIDxwYXRoIGQ9Ik0wLS4yNWgyNHYyNEgweiIgZmlsbD0ibm9uZSIvPjwvc3ZnPg==);
+    }
+
+    .arrow-down {
+      background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4gICAgPHBhdGggZD0iTTcuNDEgNy44NEwxMiAxMi40Mmw0LjU5LTQuNThMMTggOS4yNWwtNiA2LTYtNnoiLz4gICAgPHBhdGggZD0iTTAtLjc1aDI0djI0SDB6IiBmaWxsPSJub25lIi8+PC9zdmc+);
+    }
+  </style>
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+  <details>
+    <summary>
+        Informationen anzeigen
+    </summary>
+    <ul>
+        <li>Apples</li>
+        <li>Pears</li>
+        <li>Grapes</li>
+      </ul>
+  </details>
+
+  <br / >
+
+  <button class="disclosurebutton" data-toggle-button aria-controls="fruits">Fruits</button>
+  <div id="fruits">
+    <ul>
+      <li>Apples</li>
+      <li>Pears</li>
+      <li>Grapes</li>
+    </ul>
+  </div>
+
+  <script>
+    var Disclosure = function ($element) {
+      this.$element = $element
+      this.$target = $('#' + this.$element.attr('aria-controls'))
+
+      this.hide()
+
+      var self = this
+      this.$element.on('click', this.toggle.bind(self))
+    }
+
+    Disclosure.prototype.toggle = function () {
+      if (this.$element.attr('aria-expanded') === "true") {
+        this.hide()
+      } else {
+        this.show()
+      }
+    }
+
+    Disclosure.prototype.hide = function () {
+      this.$element
+        .attr('aria-expanded', false)
+        .removeClass('arrow-down')
+        .addClass('arrow-right')
+      this.$target.addClass('hidden')
+    }
+
+    Disclosure.prototype.show = function () {
+      this.$element
+        .attr('aria-expanded', true)
+        .addClass('arrow-down')
+        .removeClass('arrow-right')
+      this.$target.removeClass('hidden')
+    }
+
+    $(document).ready(function() {
+      $('[data-toggle-button]').each(function () {
+        var $togglebutton = $(this)
+        var button = new Disclosure($togglebutton)
+      })
+    })
+  </script>
+</body>
+</html>

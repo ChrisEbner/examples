@@ -1,0 +1,266 @@
+  <!DOCTYPE html>
+  <html lang="de">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>T-shirt shop</title>
+    <style>
+      * {
+        font-family: 'Roboto', sans-serif;
+      }
+
+      body, html {
+        margin: 0;
+      }
+
+      .header {
+        padding: 0;
+        min-height: 15rem;
+        box-sizing: border-box;
+        background-position: 50%;
+        background-size: cover;
+        background-image: url('https://picsum.photos/2000/500');
+        color: #fff;
+      }
+
+      .header_content-container {
+        display: flex;
+      }
+
+      .navigation {
+        background-color: #000;
+        color: #fff;
+        padding: 1rem;
+      }
+
+      .navigation_list {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        list-style: none;
+      }
+
+      .navigation_list-entry {
+        margin-right: 2rem;
+      }
+
+      .navigation_link {
+        color: #fff;
+        font-size: 1.3rem;
+        text-decoration: none;
+      }
+
+      .navigation_content-container {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .main {
+        padding-top: 3rem;
+        padding-bottom: 5rem;
+      }
+
+      .content-container {
+        max-width: 60rem;
+        margin: 0 auto 0;
+      }
+
+      .footer {
+        padding-top: 2rem;
+        padding-bottom: 5rem;
+        background-color: #000;
+        color: #fff;
+      }
+
+      .orderform {
+        margin-top: 5rem;
+      }
+
+      fieldset {
+        border: none;
+        padding: 0;
+        margin-bottom: 2rem;
+      }
+
+      .input-wrapper {
+        margin-bottom: 2rem;
+      }
+
+      .label,
+      legend {
+        display: inline-block;
+        font-size: 1rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+      }
+
+      .input {
+        width: 15rem;
+        border: 1px solid #777;
+        border-radius: 3px;
+        min-height: 2rem;
+        box-sizing: border-box;
+      }
+
+      .submit {
+        border: 0;
+        background-color: #0f775e;
+        color: #fff;
+        border-radius: 3px;
+        padding: 0.5rem 0.8rem;
+        font-size: 1.3rem;
+        margin-top: 3rem;
+      }
+
+      .search_input {
+        border: none;
+        box-sizing: border-box;
+        height: 2rem;
+        vertical-align: middle;
+      }
+
+      .search_submit {
+        box-sizing: border-box;
+        vertical-align: middle;
+        height: 2rem;
+        width: 2rem;
+        background-color: #fff;
+        border: 0;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4gICAgPHBhdGggZD0iTTE1LjUgMTRoLS43OWwtLjI4LS4yN0MxNS40MSAxMi41OSAxNiAxMS4xMSAxNiA5LjUgMTYgNS45MSAxMy4wOSAzIDkuNSAzUzMgNS45MSAzIDkuNSA1LjkxIDE2IDkuNSAxNmMxLjYxIDAgMy4wOS0uNTkgNC4yMy0xLjU3bC4yNy4yOHYuNzlsNSA0Ljk5TDIwLjQ5IDE5bC00Ljk5LTV6bS02IDBDNy4wMSAxNCA1IDExLjk5IDUgOS41UzcuMDEgNSA5LjUgNSAxNCA3LjAxIDE0IDkuNSAxMS45OSAxNCA5LjUgMTR6Ii8+ICAgIDxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiIGZpbGw9Im5vbmUiLz48L3N2Zz4=);
+      }
+
+      .richtext {
+        font-size: 1.3rem;
+        line-height: 1.5;
+      }
+
+      .header_logo {
+        margin-right: 0.5rem;
+        height: 2.2rem;
+        vertical-align: middle;
+      }
+
+      .logo-wrapper {
+        display: inline-block;
+        background-color: #000;
+        display: flex;
+        padding: 1rem;
+        font-size: 2rem;
+      }
+
+      .link {
+        color: #0f775e;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="content-container header_content-container">
+        <div class="logo-wrapper">
+          <img class="header_logo" alt="" src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjRkZGRkZGIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4gICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIgZmlsbD0ibm9uZSIvPiAgICA8cGF0aCBkPSJNMTEuOTkgMkM2LjQ3IDIgMiA2LjQ4IDIgMTJzNC40NyAxMCA5Ljk5IDEwQzE3LjUyIDIyIDIyIDE3LjUyIDIyIDEyUzE3LjUyIDIgMTEuOTkgMnptNC4yNCAxNkwxMiAxNS40NSA3Ljc3IDE4bDEuMTItNC44MS0zLjczLTMuMjMgNC45Mi0uNDJMMTIgNWwxLjkyIDQuNTMgNC45Mi40Mi0zLjczIDMuMjNMMTYuMjMgMTh6Ii8+PC9zdmc+">
+          T-shirt Shop
+        </div>
+      </div>
+    </header>
+
+    <nav class="navigation">
+      <div class="content-container navigation_content-container">
+        <ul class="navigation_list">
+          <li class="navigation_list-entry">
+            <a href="#" class="navigation_link">
+              Home
+            </a>
+          </li>
+          <li class="navigation_list-entry">
+            <a href="#" class="navigation_link">
+              Unsere T-shirts
+            </a>
+          </li>
+          <li class="navigation_list-entry">
+            <a href="#" class="navigation_link">
+              News
+            </a>
+          </li>
+        </ul>
+
+        <form method="get" action="" role="search">
+          <input aria-label="Suche" placeholder="Search" class="search_input" type="text" />
+          <button class="search_submit" type="submit" aria-label="Suche starten"></button>
+        </form>
+      </div>
+    </nav>
+
+    <main class="main content-container">
+      <h1>T-shirt Shop</h1>
+      <h2>Unsere Tshirts</h2>
+      <p class="richtext">
+        Lorem ipsum dolor sit <a class="link" href="http://www.flickr.com/photos/rclark/">amet</a>, consectetur <strong>adipiscing elit</strong>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+
+      <div class="orderform">
+        <h2>T-shirt Bestellung</h2>
+
+        <h3>T-shirt auswählen</h3>
+        <form>
+          <fieldset>
+            <legend>Größe</legend>
+            <input id="size-small" type="radio" name="size" value="small">
+            <label for="size-small">Klein - 36cm</label><br>
+            <input id="size-medium" type="radio" name="size" value="medium">
+            <label for="size-medium">Mittel - 40cm</label><br>
+            <input id="size-large" type="radio" name="size" value="large">
+            <label for="size-large">Groß - 44cm</label>
+          </fieldset>
+
+          <label class="label" for="comments">Anmerkungen</label>
+          <div class="input-wrapper">
+              <textarea class="input" id="comments"></textarea>
+          </div>
+
+          <h3>Kontaktdaten</h3>
+          <label class="label" for="sizes">Land</label>
+          <div class="input-wrapper">
+            <select class="input" name="size" id="sizes">
+              <option value="austria">Austria</option>
+              <option value="france">France</option>
+              <option value="italy">Italy</option>
+              <option value="spain">Spain</option>
+              <option value="sweden">Sweden</option>
+            </select>
+          </div>
+
+          <label class="label" for="adress">Adresse</label>
+          <div class="input-wrapper">
+            <input class="input" id="adress" type="text">
+          </div>
+
+          <div class="input-wrapper">
+            <button type="submit" class="submit">Bestellung abschicken</button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="content-container">
+        <div>Adresse: fakestraße 1/2/3 1010 Wien</div>
+      </div>
+    </footer>
+
+  </body>
+  </html>

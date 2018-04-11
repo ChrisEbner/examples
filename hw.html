@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Aufgabe</title>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <style>
+    * {
+      font-family: arial;
+    }
+
+    .disclosurebutton {
+      background: 0;
+      background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4gICAgPHBhdGggZD0iTTguNTkgMTYuMzRsNC41OC00LjU5LTQuNTgtNC41OUwxMCA1Ljc1bDYgNi02IDZ6Ii8+ICAgIDxwYXRoIGQ9Ik0wLS4yNWgyNHYyNEgweiIgZmlsbD0ibm9uZSIvPjwvc3ZnPg==);
+      background-position: left center;
+      background-repeat: no-repeat;
+      border: none;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      padding: 0.5rem;
+      padding-left: 1.5rem;
+    }
+
+    .disclosurebutton.toggled {
+      background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4gICAgPHBhdGggZD0iTTcuNDEgNy44NEwxMiAxMi40Mmw0LjU5LTQuNThMMTggOS4yNWwtNiA2LTYtNnoiLz4gICAgPHBhdGggZD0iTTAtLjc1aDI0djI0SDB6IiBmaWxsPSJub25lIi8+PC9zdmc+);
+    }
+
+    .disclosurecontent {
+      padding-left: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .disclosurecontent.hidden {
+      display: none;
+    }
+
+    .content-wrapper {
+      max-width: 50rem;
+      margin: 0 auto 0;
+    }
+
+    .form-row {
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="content-wrapper">
+    <h1>Bestellung aufgeben</h1>
+
+    <h2>Informationen zur Bestellung</h2>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </p>
+
+    <!--
+      Aufgabe 1 Accessible Disclosure:
+
+      Beim Klick auf [data-accessible-disclosure-toggle] wird [data-accessible-disclosure-target] ein oder ausgeblendet.
+      Treffen sie die notwendigen Anpassungen um dieses Disclosure Element Barrierefrei zu machen.
+      Halten sie sich dabei an die Standards auf https://www.w3.org/TR/wai-aria-practices-1.1/#disclosure
+
+      Anmerkung: jQuery wird in diesem HTML Dokuemnt als externe Resource geladen,
+      falls sie diese Aufgabe ohne Internetverbindung lösen wollen binden Sie jQuery manuell ein.
+    -->
+    <div class="disclosurebutton" data-accessible-disclosure-toggle>Weitere Informationen zur Bestellung</div>
+    <div id="disclosurecontent" class="disclosurecontent" data-accessible-disclosure-target>
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </div>
+
+    <script>
+      $disclosureToggleButton = $('[data-accessible-disclosure-toggle]')
+      $disclosureToggleContent = $('[data-accessible-disclosure-target]')
+
+      function toggleDisclosure () {
+        if ($disclosureToggleButton.hasClass('toggled')) {
+          hideDisclosure()
+        } else {
+          showDisclosure()
+        }
+      }
+
+      function hideDisclosure () {
+        $disclosureToggleButton.removeClass('toggled')
+        $disclosureToggleContent.addClass('hidden')
+      }
+
+      function showDisclosure () {
+        $disclosureToggleButton.addClass('toggled')
+        $disclosureToggleContent.removeClass('hidden')
+      }
+
+      $disclosureToggleButton.click(toggleDisclosure)
+      hideDisclosure()
+    </script>
+    <!-- Ende Aufgabe 1 -->
+
+    <h2>Bestellformular</h2>
+    <form action="/submit.php">
+      <!--
+        Aufgabe 2 Barrierefreies Formular:
+
+        2.1. Die <label> Elemente sind mit den jeweils benachbarten <input>, <select> & <textarea> Elementen zu verknüpfen.
+
+        2.2. Die Radiobuttons sind mit einem <fieldset> und <legend> (mit dem Inhalt: "Farbe") zu erweitern.
+
+        2.3. Die folgenden Inputs sollen als Pflichtfelder ausgezeichnet werden (das "required" Attribut ist im Zuge dieser Aufgabe ausreichend):
+        - input#adress
+        - select#country
+        - input#color-red, input#color-green, input#color-blue
+        - input#agb
+      -->
+
+      <div class="form-row">
+        <label>Adresse</label>
+        <input id="address" name="address" type="text">
+      </div>
+
+      <div class="form-row">
+        <label>Land</label>
+        <select name="country" id="country">
+          <option value="AT">Österreich</option>
+          <option value="DE">Deutschland</option>
+          <option value="CH">Schweiz</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label>Anmerkung</label>
+        <textarea id="anmerkung"></textarea>
+      </div>
+
+      <div class="form-row">
+        <input type="radio" id="color-red" name="color"><label>Rot</label>
+        <input type="radio" id="color-green" name="color"><label>Grün</label>
+        <input type="radio" id="color-blue" name="color"><label>Blau</label>
+      </div>
+
+      <div class="form-row">
+        <input type="checkbox" id="agb">
+        <label>AGBs gelesen und akzeptiert</label>
+      </div>
+
+      <button>Formular abschicken</button>
+      <!-- Ende Aufgabe 2 -->
+    </form>
+  </div>
+
+</body>
+</html>
+

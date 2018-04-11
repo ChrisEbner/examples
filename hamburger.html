@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Hamburger Menu</title>
+  <style>
+    * {
+      font-family: arial;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    .navigation.overlay::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,.47);
+      z-index: 5;
+    }
+
+    .navigation {
+      position: fixed;
+      width: 100%;
+      height: 2rem;
+      box-shadow: 0 0 5px #000;
+      padding: 0.5rem;
+      background-color: #fff;
+      display: flex;
+    }
+
+    .navigation_toggle {
+      background: none;
+      background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4gICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIgZmlsbD0ibm9uZSIvPiAgICA8cGF0aCBkPSJNMyAxOGgxOHYtMkgzdjJ6bTAtNWgxOHYtMkgzdjJ6bTAtN3YyaDE4VjZIM3oiLz48L3N2Zz4=);
+      background-repeat: no-repeat;
+      background-position: left center;
+      border: none;
+      height: 2rem;
+      background-size: 2rem;
+      padding: 0;
+      display: none;
+      padding-left: 2.4rem;
+      font-size: 1.2rem;
+    }
+
+    .navigation_content {
+      display: inline-block;
+      z-index: 6;
+    }
+
+    .navigation_list {
+      display: flex;
+      padding: 0;
+      margin: 0;
+      margin-top: 0.2rem;
+      margin-left: 1.4rem;
+      font-size: 1.3rem;
+      font-size: 1.4rem;
+      list-style: none;
+    }
+
+    .navigation_list-item {
+      margin-right: 1rem;
+    }
+
+    .navigation_list-link {
+      text-decoration: none;
+      color: #000;
+    }
+
+    main {
+      padding: 2rem;
+      padding-top: 4rem;
+    }
+
+    h1 {
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 500px) {
+      .navigation_toggle {
+        position: absolute;
+        z-index: 9;
+        display: block;
+      }
+
+      .navigation_content {
+        position: fixed;
+        background-color: #fff;
+        height: 100%;
+        left: 0;
+        top: 0;
+        padding: 0.5rem;
+        margin: 0;
+        padding-top: 4rem;
+        width: 10rem;
+
+        box-shadow: 0 0 5px #000;
+        transform: translateX(-110%);
+        display: none;
+      }
+
+      .navigation_content.open {
+        transform: translateX(0);
+        display: block;
+      }
+
+      .navigation_list {
+        flex-direction: column;
+        font-size: 1.1rem;
+      }
+
+      .navigation_list-item {
+        margin-bottom: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!--
+    Aufgabe:
+
+    Bei einem klick auf [data-menu-toggle] öffnet und schließt sich in schmalen Bildschirmauflösungen
+    das [data-menu-content] Element.
+
+    Sehen Sie sich dazu die Best Practices des W3C an und machen Sie diese Umsetzung Barrierefrei.
+    https://www.w3.org/TR/wai-aria-practices-1.1/#menubutton
+  -->
+
+  <nav class="navigation" id="navigation">
+    <div data-menu-toggle class="navigation_toggle">Menu</div>
+    <div data-menu-content class="navigation_content" id="menu">
+      <ul class="navigation_list">
+        <li class="navigation_list-item"><a class="navigation_list-link" href="#">Home</a></li>
+        <li class="navigation_list-item"><a class="navigation_list-link" href="#">About</a></li>
+        <li class="navigation_list-item"><a class="navigation_list-link" href="#">Shop</a></li>
+        <li class="navigation_list-item"><a class="navigation_list-link" href="#">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <h1>Dummycontent</h1>
+    <h2>What is Lorem Ipsum?</h2>
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+    <a href="#">dummylink</a>
+
+    <h2>Why do we use it?</h2>
+    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+    <a href="#">dummylink2</a>
+
+    <h2>Where does it come from?</h2>
+    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+
+    The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+
+    <h2>Where can I get some?</h2>
+
+    There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+  </main>
+
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+  <script>
+    $menuToggle = $('[data-menu-toggle]')
+    $menuContent = $('[data-menu-content]')
+
+    function openMenu () {
+      $menuContent.addClass('open')
+      $('.navigation').addClass('overlay')
+    }
+
+    function closeMenu () {
+      $menuContent.removeClass('open')
+      $('.navigation').removeClass('overlay')
+    }
+
+    $menuToggle.on('click', function () {
+      if ($menuContent.hasClass('open')) {
+        closeMenu()
+      } else {
+        openMenu()
+      }
+    })
+  </script>
+</body>
+</html>
